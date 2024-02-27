@@ -1,18 +1,14 @@
 {
-    "routes": [
-        {
-          "route": "/login",
-          "redirect": "/.auth/login/github"
-        },
-        {
-            "route": "/",
-            "allowedRoles": [ "admin" ]
-        }
-    ],
-    "responseOverrides": {
-      "401": {
-        "redirect": "/login",
-        "statusCode": 302
-      }
+  "routes": [
+    {
+      "route": "/*",
+      "allowedRoles": ["authenticated"]
     }
+  ],
+  "responseOverrides": {
+    "401": {
+      "statusCode": 302,
+      "redirect": "/.auth/login/github"
+    }
+  }
 }
